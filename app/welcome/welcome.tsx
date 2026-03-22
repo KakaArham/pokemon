@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 
 export function Welcome() {
+  const [pokemon, setPokemon] = useState <any>([]);
+
+  const fetchPokemon = async () => {
+    const resp = await fetch("https://pokeapi.co/api/v2/pokemon");
+    const data = await resp.json();
+    setPokemon(data.results);
+  };
+
+  useEffect(() => {
+    fetchPokemon();
+  }, []);
+
+  console.log(pokemon);
+
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">

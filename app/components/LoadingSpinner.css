@@ -1,0 +1,51 @@
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  min-height: 50vh;
+}
+
+.pokeball-spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: linear-gradient(180deg, #ff0000 0%, #ff0000 48%, #000 48%, #000 52%, #fff 52%, #fff 100%);
+  position: relative;
+  animation: spin 1s infinite linear;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.pokeball-spinner-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.spinner-text {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}

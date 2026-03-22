@@ -1,0 +1,41 @@
+.stat-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  width: 60px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  width: 40px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.stat-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 4px;
+  transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fillBar 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+}
