@@ -38,6 +38,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <main className="main-container animate-fade-in">
           {children}
         </main>
+        <footer className="app-footer">
+          Built with <span style={{color: '#ff5353'}}>⚡</span> by Antigravity
+        </footer>
         <ScrollRestoration />
         <Scripts />
       </body>

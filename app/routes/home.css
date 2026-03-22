@@ -23,6 +23,52 @@
   font-size: 1.2rem;
   color: var(--text-secondary);
   font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  color: white;
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius-lg);
+  outline: none;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.search-input:focus {
+  border-color: #FFCB05;
+  box-shadow: 0 0 0 2px rgba(255, 203, 5, 0.2);
+}
+
+.search-input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.no-results {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
 }
 
 .pokemon-grid {

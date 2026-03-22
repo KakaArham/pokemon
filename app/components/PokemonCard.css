@@ -55,12 +55,12 @@
   background-color: var(--card-tint);
   opacity: 0.2;
   filter: blur(20px);
-  transition: opacity var(--transition-speed) ease, filter var(--transition-speed) ease;
+  will-change: opacity;
+  transition: opacity var(--transition-speed) ease;
 }
 
 .pokemon-card:hover .pokemon-card-bg-circle {
-  opacity: 0.4;
-  filter: blur(15px);
+  opacity: 0.5;
 }
 
 .pokemon-id {
@@ -78,8 +78,8 @@
   height: 120px;
   object-fit: contain;
   z-index: 2;
+  will-change: transform;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
 }
 
 .pokemon-name {

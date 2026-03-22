@@ -48,6 +48,8 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   margin: 0;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
   background-image: 
     radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 25%),
@@ -109,8 +111,27 @@ a {
 /* Layout */
 .main-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
+  flex: 1;
+}
+
+/* Footer Watermark */
+.app-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: auto;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.app-footer:hover {
+  opacity: 1;
 }
 
 /* Animations */
