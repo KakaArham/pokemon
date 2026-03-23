@@ -12,20 +12,26 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader() {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
-  const data = await response.json();
+  const limit = 90;
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
+    const data = await response.json();
 
-  const pokemonList = data.results.map((pokemon: { name: string, url: string }) => {
-    const idStr = pokemon.url.split("/").filter(Boolean).pop();
-    const id = parseInt(idStr || "0", 10);
-    return {
-      id,
-      name: pokemon.name,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-    };
-  });
+    const pokemonList = data.results.map((pokemon: { name: string, url: string }) => {
+      const idStr = pokemon.url.split("/").filter(Boolean).pop();
+      const id = parseInt(idStr || "0", 10);
+      return {
+        id,
+        name: pokemon.name,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+      };
+    });
 
-  return { pokemonList };
+    return { pokemonList };
+  } catch (error) {
+    console.error("VS loader fetch failed:", error);
+    return { pokemonList: [] };
+  }
 }
 
 export function HydrateFallback() {

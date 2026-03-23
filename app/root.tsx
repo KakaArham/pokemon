@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -25,6 +26,15 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      if (iOS) {
+        document.body.classList.add("no-blur");
+      }
+    }
+  }, []);
+
   return (
     <html lang="en">
       <head>

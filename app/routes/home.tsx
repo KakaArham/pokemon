@@ -13,22 +13,28 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader() {
-  // Only fetch the list. The server won't timeout because it's only 1 request.
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
-  const data = await response.json();
+  // Reduce initial load for mobile and avoid heavy simultaneous SVGs on iOS.
+  const limit = 90;
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
+    const data = await response.json();
 
-  const pokemonList = data.results.map((pokemon: { name: string, url: string }) => {
-    // Extract ID from url, e.g., https://pokeapi.co/api/v2/pokemon/1/
-    const idStr = pokemon.url.split("/").filter(Boolean).pop();
-    const id = parseInt(idStr || "0", 10);
-    return {
-      id,
-      name: pokemon.name,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-    };
-  });
+    const pokemonList = data.results.map((pokemon: { name: string, url: string }) => {
+      // Extract ID from url, e.g., https://pokeapi.co/api/v2/pokemon/1/
+      const idStr = pokemon.url.split("/").filter(Boolean).pop();
+      const id = parseInt(idStr || "0", 10);
+      return {
+        id,
+        name: pokemon.name,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+      };
+    });
 
-  return { pokemonList };
+    return { pokemonList };
+  } catch (error) {
+    console.error("Home loader fetch failed:", error);
+    return { pokemonList: [] };
+  }
 }
 
 export function HydrateFallback() {
