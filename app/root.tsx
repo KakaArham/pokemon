@@ -35,11 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Header />
-        <main className="main-container animate-fade-in">
+        <main className="main-container">
           {children}
         </main>
         <footer className="app-footer">
-          Built with <span style={{color: '#ff5353'}}>⚡</span> by Antigravity
+          © 2026 Pokemon Web by Kaka Arham
         </footer>
         <ScrollRestoration />
         <Scripts />
